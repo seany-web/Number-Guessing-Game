@@ -30,6 +30,42 @@ def start_game():
     ( You can add more features/enhancements if you'd like to. )
     """
     # write your code inside this function.
+    print('?????????????????????????????????????????????????????\n\n')
+    print('         WELCOME TO THE NUMBER GUESSING GAME\n\n')
+    print('?????????????????????????????????????????????????????\n\n')
+
+    print("I'm thinking of a number between 1 and 100\n\n")
+    game_started = True
+
+    while(True):
+      solution = random.randrange(1,100)
+      attempts = 0
+      
+      while(game_started):
+        guess = int(input('\nPlease enter a number... '))
+        attempts += 1
+        if guess > solution:
+          print('LOWER!\n')
+        elif guess < solution:
+          print('HIGHER!\n')
+        else:
+          print('YOU WIN!\n')
+          print(f'Congratulations, you guessed the random number in {attempts} attempts\n')
+          game_started = False
+      
+      
+      play_again = input('Would you like to play again? yes/no: ')
+
+      if play_again.upper() == 'NO':
+        print('\nThanks for playing. See you next time!\n')
+        break
+      elif play_again.upper() == 'YES':
+        game_started = True
+      else:
+        print('\nPlease try again\n')
+
+
+      
 
 
 
