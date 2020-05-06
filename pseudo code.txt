@@ -1,0 +1,35 @@
+display welcome message to player
+
+initiate high score value and set to None
+initiate attempts and set to 0
+generate a store random number between 1 and 10 as the solution
+
+begin game loop 
+    
+    prompt the player to pick a number between 1 and 10 and store as guess
+    if guess is higher than the solution
+        add one to attempts
+        display a message informing the player that the solution is lower
+    if the guess is lower than the solution
+        add one to attempts
+        display a message informing the player that the solution is higher
+    if the guess is equal to the solution
+        add one to attempts
+        if highscore has not been set
+            set highscore equal to attempts
+        if highscore is higher than attempts
+            set highscore equal to attempts    
+        display a message that confirms that the player has won
+        prompt the player if they want to play again
+        if they want to play again
+            set the attempts to 0
+            generate a new random number between 1 and 10
+            display a message showing the high score
+            restart game loop
+        else
+            display a message which confirms the player is quitting the game
+            exit game loop
+    if the guess is neither of the above
+        display a message to the player that they have entered a incorrect value
+        restart game loop
+            

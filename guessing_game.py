@@ -34,39 +34,43 @@ def start_game():
     print('         WELCOME TO THE NUMBER GUESSING GAME\n\n')
     print('?????????????????????????????????????????????????????\n\n')
 
-    print("I'm thinking of a number between 1 and 100\n\n")
+    high_score = None
+    attempts = 0
+    solution = random.randrange(1,10)
     game_started = True
-
-    while(True):
-      solution = random.randrange(1,100)
-      attempts = 0
-      
-      while(game_started):
-        guess = int(input('\nPlease enter a number... '))
-        attempts += 1
-        if guess > solution:
-          print('LOWER!\n')
-        elif guess < solution:
-          print('HIGHER!\n')
-        else:
-          print('YOU WIN!\n')
-          print(f'Congratulations, you guessed the random number in {attempts} attempts\n')
+    #print(solution) #used for testing 
+    while(game_started): 
+      try:
+        guess = input("I'm thinking of a number between 1 and 10... ")
+        if int(guess) > solution:
+          attempts += 1
+          print(f'The number I am thinking of is lower than {guess}\n')
+        elif int(guess) < solution:
+          attempts += 1
+          print(f'The number I am thinking of is higher than {guess}\n')
+        elif int(guess) == solution:
+          attempts += 1
           game_started = False
-      
-      
-      play_again = input('Would you like to play again? yes/no: ')
-
-      if play_again.upper() == 'NO':
-        print('\nThanks for playing. See you next time!\n')
-        break
-      elif play_again.upper() == 'YES':
-        game_started = True
-      else:
-        print('\nPlease try again\n')
-
-
-      
-
+          if high_score == None or high_score > attempts:
+            high_score = attempts
+          print(f"\nThat's it! You answered correctly in {attempts} attempts.\n")
+          while(True):
+            play_again = input('Would you like to play again? yes/no... ')
+            if play_again.upper() == 'YES':
+              game_started = True
+              attempts = 0
+              solution = random.randrange(1,10)
+              #print(solution) # used for testing
+              print(f'\nThe current highscore is {high_score}. Can you beat it?\n')
+              break
+            elif play_again.upper() == 'NO':
+              print('Thanks for playing! See you next time.\n')
+              print('Exiting game.\n')
+              break
+            else:
+              print('That is not a recognised value. Please try again\n') 
+      except:
+        print('That is not a recognised value. Please try again\n')  
 
 
 # Kick off the program by calling the start_game function.
