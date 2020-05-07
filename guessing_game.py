@@ -76,9 +76,9 @@ def start_game():
               print('Exiting game.\n')
               break
             else:
-              print('That is not a recognised value. Please try again\n') 
+              print(f"'{play_again}' is not a recognised value. Please enter 'yes' or 'no'.\n") 
       except:
-        print('That is not a recognised value. Please try again\n')  
+        print(f"'{guess}' is not a recongnised value. Please enter a number between 1 and 10.\n")  
         #game logic ends here
     #end of game loop
 
